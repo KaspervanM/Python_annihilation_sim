@@ -23,7 +23,7 @@ for index, ball in enumerate(balls):
     ball.charge = e
 
 
-def update_particle(b, t) -> None:
+def update_particle(b) -> None:
     b.force = vector(0, 0, 0)
     self_ind = balls.index(b)
     for i, ball_elem in enumerate(balls):
@@ -40,9 +40,9 @@ def update_particle(b, t) -> None:
             b.force += r_vec * f_em / r
 
 
-def update(t):
+def update():
     for ball_elem in balls:
-        update_particle(ball_elem, t)
+        update_particle(ball_elem)
     for ball_elem2 in balls:
         ball_elem2.velocity += ball_elem2.force / ball_elem2.mass
         print(balls.index(ball_elem2), ": ",
@@ -50,9 +50,6 @@ def update(t):
         ball_elem2.pos += ball_elem2.velocity
 
 
-dt = 0.1
-time = 0
 while True:
     rate(1)
-    update(time)
-    time += dt
+    update()
