@@ -73,7 +73,7 @@ class Particle(sphere):
                     #print("strong")
                     # Strong force crude aproximation attempt (wikipedia: At the range of 10^−15 m,
                     # the strong force is approximately 10^38 times as strong as gravitation.
-                    f_s = 10**38*f_g#(10**38/(r*10**15))*f_g
+                    f_s = (10**38/(r*10**15))*f_g
                     #f_s = 7.6388794e-98 * 2.63157895e-7 ** (log10(r)) * f_g
                     self.force += r_vec * f_s * one_over_r
                 

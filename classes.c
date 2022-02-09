@@ -1580,6 +1580,7 @@ static PyObject *__pyx_float_neg_1_602176565eneg_19;
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
+static PyObject *__pyx_int_1000000000000000;
 static PyObject *__pyx_int_100000000000000000000000000000000000000;
 static PyObject *__pyx_int_neg_1;
 static PyObject *__pyx_tuple__2;
@@ -3290,17 +3291,23 @@ static PyObject *__pyx_pf_7classes_8Particle_4set_force(CYTHON_UNUSED PyObject *
         /* "classes.pyx":76
  *                     # Strong force crude aproximation attempt (wikipedia: At the range of 10^15 m,
  *                     # the strong force is approximately 10^38 times as strong as gravitation.
- *                     f_s = 10**38*f_g#(10**38/(r*10**15))*f_g             # <<<<<<<<<<<<<<
+ *                     f_s = (10**38/(r*10**15))*f_g             # <<<<<<<<<<<<<<
  *                     #f_s = 7.6388794e-98 * 2.63157895e-7 ** (log10(r)) * f_g
  *                     self.force += r_vec * f_s * one_over_r
  */
-        __pyx_t_6 = PyNumber_Multiply(__pyx_int_100000000000000000000000000000000000000, __pyx_v_f_g); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 76, __pyx_L1_error)
+        __pyx_t_6 = PyNumber_Multiply(__pyx_v_r, __pyx_int_1000000000000000); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 76, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
+        __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_int_100000000000000000000000000000000000000, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        __pyx_t_6 = PyNumber_Multiply(__pyx_t_5, __pyx_v_f_g); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 76, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_XDECREF_SET(__pyx_v_f_s, __pyx_t_6);
         __pyx_t_6 = 0;
 
         /* "classes.pyx":78
- *                     f_s = 10**38*f_g#(10**38/(r*10**15))*f_g
+ *                     f_s = (10**38/(r*10**15))*f_g
  *                     #f_s = 7.6388794e-98 * 2.63157895e-7 ** (log10(r)) * f_g
  *                     self.force += r_vec * f_s * one_over_r             # <<<<<<<<<<<<<<
  * 
@@ -4882,6 +4889,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_1000000000000000 = PyInt_FromString((char *)"1000000000000000", 0, 0); if (unlikely(!__pyx_int_1000000000000000)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_100000000000000000000000000000000000000 = PyInt_FromString((char *)"100000000000000000000000000000000000000", 0, 0); if (unlikely(!__pyx_int_100000000000000000000000000000000000000)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_neg_1 = PyInt_FromLong(-1); if (unlikely(!__pyx_int_neg_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;

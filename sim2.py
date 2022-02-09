@@ -1,4 +1,5 @@
 from math import log10
+from random import random
 from classes import Particle
 from vpython import vector, rate, mag, sqrt
 
@@ -44,19 +45,19 @@ def update(particles):
     if closest > 0:
         dt = 10**(-10.1249999992 * 0.94408751129 **
                   # sqrt(max(log10(fastest), 0) + 5) * 0.28571428571)
-                  (log10(closest)) * (0.09375*max(log10(fastest), 0)+.25))
+                  (log10(closest)))  # * (0.09375*max(log10(fastest), 0)+.25))
 
 
 def main():
     particles = []
-    for i in range(2):
+    for i in range(3):
         particles.append(Particle(identity=i, particle_type="p", pos=vector(
-            i*1e-14 - 1e-16 * i, 0, 0), velocity=vector((0 if i == 1 else 1)*100000000 * (-1)**int(.5*i), 0, 0)))
+            i*5e-15 * random(), i*5e-15 * random(), 0), velocity=vector((0 if i == 1 else 1)*10000000 * (-1)**int(.5*i), 0, 0)))
     # particles.append(electron(identity=2, pos=vector(
     #    -5e-14, 1e-12, 0), velocity=vector(500000, 50000, 200000)))
 
     while True:
-        rate(500)
+        rate(50)
         # input()
         update(particles)
 
